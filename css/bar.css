@@ -1,0 +1,14 @@
+.bar{
+    position: absolute;
+    background: #739cdd;
+
+    border: 2px solid black;
+    width: 18px;
+    height: 10px;
+
+    bottom: 0;
+
+    z-index: -1;
+
+    text-align: center;
+}

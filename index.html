@@ -1,0 +1,210 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>超級排序</title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen and (min-width:920px)">
+    <link rel="stylesheet" type="text/css" href="css/smallstyle.css" media="screen and (max-width:920px)">
+    <link rel="stylesheet" type="text/css" href="css/menu-style.css">
+    <link rel="stylesheet" type="text/css" href="css/bar.css">
+</head>
+
+<body background="img/bg3.png">
+    <div id="row1">
+        <div class="logo">
+            <img src="img/bug.png" style="margin:10px 20px; width:150px;">
+        </div>
+        <div class="header">
+            <img src="img/buble.png">
+        </div>
+    </div>
+    <div id="row2">
+        <div class="menu">
+            <div class="title">MENU</div>
+            <ul class="nav">
+                <li><a href="index.html">泡泡排序</a></li>
+                <li><a href="selection.html">選擇排序</a></li>
+                <li><a href="insertion.html">插入排序</a></li>
+            </ul>
+        </div>
+        <div class="user">
+            <div id="user_output" class="play_area output">
+                <div class="lupng"><img src="img/l.png"></div>
+                <div class="rupng"><img src="img/r.png"></div>
+                <div id="user_output_script">
+                    
+                </div>
+            </div>
+            <hr>
+            <div id="user_input" class="play_area input">
+                <div class="ldpng"><img src="img/l.png"></div>
+                <div class="rdpng"><img src="img/r.png"></div>
+                <textarea id="input_content" class="input">/*請在此輸入程式碼*/</textarea>
+            </div>
+            <button id="submit" type="button">執行</button>
+            <button id="user_pre" class="unclickable" type="button">上一步</button>
+            <button id="user_next" class="unclickable" type="button">下一步</button>
+            <button id="user_start" class="unclickable" type="button">自動</button>
+        </div>
+        <div class="ex">
+            <div id="ex_output" class="play_area output">
+                <div class="lupng"><img src="img/l.png"></div>
+                <div class="rupng"><img src="img/r.png"></div>
+            </div>
+            <hr>
+            <div id="ex_input" class="play_area input">
+                <div class="ldpng"><img src="img/l.png"></div>
+                <div class="rdpng"><img src="img/r.png"></div>
+                <div id="surface">
+                    <p>
+                        泡泡排序法是因為其排列過程會讓比較大的數據像泡泡一樣往上升因而得名。
+                    </p><br>
+
+                    <p>
+                        實作上我們需要比較選中的數字和下一個數字的大小，若是我們選中的數字比較大則將兩數交換位子，否則就繼續比較下去，當比較到陣列的盡頭時就回到起始點繼續。
+                    </p><br>
+
+                    <p>
+                        點擊右方的解鎖可以查看答案。
+                    </p>
+
+                    <button id="unlock" type="button">解鎖</button>
+                </div>
+                <div id="hide">
+                    <p>for(var i = 0;i < a.length;i++){</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;for(var j = 0;j < a.length-i;j++){</p>   
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(a[j] > a[j+1]){</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var temp = a[j];</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[j] = a[j+1];</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[j+1] = temp;</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                    <p>}</p>
+                </div>
+            </div>
+            <button id="ex_pre" type="button">上一步</button>
+            <button id="ex_next" type="button">下一步</button>
+            <button id="ex_start" type="button">自動</button>
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bar.js"></script>
+    <script src="js/buble_input.js"></script>
+    <script src="js/buble_example.js"></script>
+    <script src="js/tool.js"></script>
+    <script type="text/javascript">
+    margin = ($("#ex_output").width() % wid - 1)/2;
+    max = Math.floor(($("#ex_output").width()-margin*2) / wid);
+    roof = $("#ex_output").height()/10 - 1;
+    
+    $("#user_start").attr("disabled", true);
+    $("#user_next").attr("disabled", true);
+    $("#user_pre").attr("disabled", true);
+    
+    $("#hide").hide("fast");
+    $("#unlock").on("click", function() {
+        $("#surface").hide("fast");
+        $("#hide").show("fast");
+    });
+    // user
+    var a = []
+    var org_a = []
+    var ch = [
+        []
+    ];
+
+    var user_auto_switch = false,
+        user_auto;
+
+    array_notre_init(org_a);
+    a = org_a.slice();
+
+    print_bars(a, "#user_output");
+    var $user_bars = get_bars("#user_output");
+
+    $("#submit").on("click", function() {
+        $("#user_start").attr("disabled", false);
+        $("#user_start").removeClass("unclickable");
+        $("#user_next").attr("disabled", false);
+        $("#user_next").removeClass("unclickable");
+        $("#user_pre").attr("disabled", false);
+        $("#user_pre").removeClass("unclickable");
+        
+        remove_bars($user_bars);
+        a = org_a.slice();
+        print_bars(a, "#user_output");
+        $user_bars = get_bars("#user_output");
+        submit($("#input_content").val());
+        user_i = 0;
+        user_change_array = record_swap(ani_array);
+        user_change_array = remove_repeat_in_array(user_change_array);
+        user_hl_array = hl_array_init(user_change_array);
+    });
+
+    $("#user_next").on("click", function() {
+        user_next($user_bars);
+    })
+
+    $("#user_pre").on("click", function() {
+        user_pre($user_bars);
+    })
+
+    $("#user_start").on("click", function() {
+        if(user_auto_switch){
+            clearInterval(user_auto);
+            user_auto_switch = false;
+            $(this).css({
+                "background-color" : "white",
+                "color" : "black"
+            });
+        }else{
+            user_auto = setInterval(function() { user_next($user_bars) }, speed);
+            user_auto_switch = true;
+            $(this).css({
+                "background-color" : "rgba(136, 142, 126, 0.8)",
+                "color" : "white"
+            });
+        }
+    })
+
+    // ex
+    var ex_auto_switch = false,
+        ex_auto;
+
+    array_init(ex_array);
+    change_array_init(ex_change_array);
+    print_bars(ex_array, "#ex_output");
+    var $ex_bars = get_bars("#ex_output");
+    hl_init($ex_bars[0]);
+
+    $("#ex_next").on("click", function() {
+        ex_next($ex_bars);
+    })
+
+    $("#ex_pre").on("click", function() {
+        ex_pre($ex_bars);
+    })
+
+    $("#ex_start").on("click", function() {
+        if(ex_auto_switch){
+            clearInterval(ex_auto);
+            ex_auto_switch = false;
+            $(this).css({
+                "background-color" : "white",
+                "color" : "black"
+            });
+        }else{
+            ex_auto = setInterval(function() { ex_next($ex_bars) }, speed);
+            ex_auto_switch = true;
+            $(this).css({
+                "background-color" : "rgba(136, 142, 126, 0.8)",
+                "color" : "white"
+            });
+        }
+    })
+    </script>
+</body>
+
+</html>

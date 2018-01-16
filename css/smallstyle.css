@@ -1,0 +1,213 @@
+*{
+	margin: 0;
+	padding: 0;
+	
+}
+
+hr{
+	margin: 8px;
+}
+
+/*第一列*/
+#row1{
+	position: relative;
+
+	height: 20%;
+}
+
+.logo{
+	position: absolute;
+
+	height: 100%;
+	width:15%;
+}
+
+.header{
+	position: absolute;
+
+	height: 100%;
+	width: 85%;
+
+	right:0;
+
+	text-align: center;
+}
+
+.header img{
+	height: 100%;
+}
+
+/*第二列*/
+#row2{
+	position: relative;
+
+	height: 80%;
+}
+/*input跟output的共同屬性調這邊*/
+.play_area{
+	border: 8px solid 	rgba(136, 142, 126, 0.5);
+	position: relative;
+	z-index: 0;
+	height: 50%;
+	background-color: white;
+	font-family: monospace;
+}
+
+.input{
+	border-bottom-right-radius:20px;
+	border-bottom-left-radius:20px;
+}
+
+.output{
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+}
+
+.user{
+	position: absolute;
+
+	height: 90%;
+	width: 70%;
+	
+	left: 20%;
+}
+
+.user textarea{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+    font-size: 18px;
+	resize: none;
+}
+.lupng{
+	position: absolute;
+	top: -20px;
+	left: -30px;
+}
+.rupng{
+	position: absolute;
+	top: -20px;
+	right: -30px;
+}
+.ldpng{
+	position: absolute;
+	bottom: -20px;
+	right: -30px;
+}
+.rdpng{
+	position: absolute;
+	bottom: -20px;
+	left: -30px;
+}
+.ex{
+	position: absolute;
+
+	height:90%;
+	width: 70%;
+	
+	top:120%;
+	left:20%;
+}
+
+button{
+	position: absolute;
+	background-color:white;
+    border: 3px solid rgba(136, 142, 126, 0.8);
+	border-radius:8px;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+button:hover {
+	background-color: rgba(136, 142, 126, 0.8);
+	color: white;
+}
+
+.unclickable {
+	color: white;
+}
+
+.unclickable:hover{
+	background-color: white;
+	color: white;
+	cursor: default;
+}
+
+#submit{
+	bottom: -100px;
+	right: 0px;
+}
+
+#surface{
+	position: relative;
+	
+	width: 100%;
+	height: 100%;
+	
+	background: white;
+	
+	font-size: 18px;
+
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#hide{
+	position: absolute;
+	
+	width: 100%;
+	height: 100%;
+
+	z-index: -1;
+	top:0;
+
+	font-size: 18px;
+
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#unlock{
+	position: absolute;
+	bottom: 0px;
+	right: 10px;
+}
+
+#ex_pre{
+	bottom: -100px;
+	left: 0px;
+}
+
+#ex_next{
+	bottom: -100px;
+	left: 65px;
+}
+
+#ex_start{
+	bottom: -100px;
+	left: 130px;
+}
+
+#user_pre{
+	bottom: -100px;
+	left: 0px;
+}
+
+#user_next{
+	bottom: -100px;
+	left: 65px;
+}
+
+#user_start{
+	bottom: -100px;
+	left: 130px;
+}
